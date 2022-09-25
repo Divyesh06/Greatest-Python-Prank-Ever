@@ -15,7 +15,7 @@ def binary_to_text(binary):
 
 desktop = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
 os.chdir(desktop)
-path = 'rickroll.jpg'
+path = 'wallpaper.jpg'
 
 with urllib.request.urlopen('https://i.ibb.co/prnhDQg/wallpaper.jpg') as response:
     content = response.read()
