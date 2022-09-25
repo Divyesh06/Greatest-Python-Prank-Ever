@@ -6,10 +6,8 @@ This is a completely safe script and will not do any real damage to your device.
 However, if you are still having safety doubts, you can run `Source\decrypyed.py` which has a readable code that you can review first. Although this will ruin some fun :(
 
 **Instructions**
-* Currently works best only on Windows 64-bit devices but it may support other devices.
+* Best support on Windows 64-bit devices but should work well on other devices
 * Requires Python 3x to be Installed
-* Will recommend running it on IDLE Python instead of IDEs like VS Code,PyCharm etc.
-* Just don't close anything in the middle! Everything will come to an end eventually.
 
 <br>
 <br>
