@@ -5,6 +5,7 @@ import webbrowser
 import time
 import os
 import urllib.request
+import struct
 
 desktop = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
 os.chdir(desktop)
@@ -18,9 +19,14 @@ with urllib.request.urlopen('https://i.ibb.co/jWvQKpJ/rickroll-4k.jpg') as respo
 
 try:
     import ctypes
-    SPI_SETDESKWALLPAPER = 20
-    ctypes.windll.user32.SystemParametersInfoW(
-        20, 0, os.path.join(desktop, path), 3)
+    import struct
+
+    bits=struct.calcsize('P') * 8
+    
+    if bits == 64:
+        ctypes.windll.user32.SystemParametersInfoW(20, 0, os.path.abspath(path), 0)
+    else:
+        ctypes.windll.user32.SystemParametersInfoA(20, 0, os.path.abspath(path), 0)
 except:
     pass  # In case the user is not on windows
 
