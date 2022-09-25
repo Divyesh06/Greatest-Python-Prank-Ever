@@ -1,24 +1,29 @@
+import subprocess
+from tkinter import *
 import sys
 import webbrowser
 import time
 import os
 import urllib.request
+
 desktop = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
 os.chdir(desktop)
+path = 'rickroll.jpg'
+
 with urllib.request.urlopen('https://i.ibb.co/jWvQKpJ/rickroll-4k.jpg') as response:
     content = response.read()
-    file = open("rickroll.jpg", "wb")
+    file = open(path, "wb")
     file.write(content)
     file.close()
 
 try:
-    path = 'rickroll.jpg'
     import ctypes
     SPI_SETDESKWALLPAPER = 20
     ctypes.windll.user32.SystemParametersInfoW(
         20, 0, os.path.join(desktop, path), 3)
 except:
     pass  # In case the user is not on windows
+
 time.sleep(1)
 print('Hello')
 time.sleep(1)
@@ -37,8 +42,8 @@ for i in range(10):
 for i in range(70):
     with open(f'index{i}.html', 'w') as file:
         file.write("""<iframe width="100%" height="100%" src="https://www.youtube.com/embed/GtL1huin9EE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>""")
+
 for i in range(15):
-    from tkinter import *
     root = Tk()
     root.geometry('650x650')
     root.title('Never gonna give you up Lyrics')
@@ -52,13 +57,12 @@ for i in range(15):
     """, font=('Arial', 20), anchor='w', justify=LEFT).pack()
     root.mainloop()
 
-import subprocess
 subprocess.check_call([sys.executable, "-m", "pip", "install", 'PyQt5'])
 subprocess.check_call([sys.executable, "-m", "pip", "install", 'PyQtWebEngine'])
-import sys
-from PyQt5.QtCore import *
-from PyQt5.QtWidgets import *
+
 from PyQt5.QtWebEngineWidgets import *
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import *
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -68,6 +72,8 @@ class MainWindow(QMainWindow):
             QUrl('https://www.youtube.com/watch?v=dQw4w9WgXcQ'))
         self.setCentralWidget(self.browser)
         self.showMaximized()
+
+
 app = QApplication(sys.argv)
 QApplication.setApplicationName('You have been rickrolled')
 for i in range(15):
