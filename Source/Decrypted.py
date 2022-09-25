@@ -1,17 +1,24 @@
+import sys
+import webbrowser
 import time
 import os
 import urllib.request
 desktop = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
 os.chdir(desktop)
 with urllib.request.urlopen('https://i.ibb.co/jWvQKpJ/rickroll-4k.jpg') as response:
-   content = response.read()
-   file = open("rickroll.jpg", "wb")
-   file.write(content)
-   file.close()
-path='rickroll.jpg'
-import ctypes
-SPI_SETDESKWALLPAPER = 20
-ctypes.windll.user32.SystemParametersInfoW(20, 0, os.path.join(desktop,path), 3)
+    content = response.read()
+    file = open("rickroll.jpg", "wb")
+    file.write(content)
+    file.close()
+
+try:
+    path = 'rickroll.jpg'
+    import ctypes
+    SPI_SETDESKWALLPAPER = 20
+    ctypes.windll.user32.SystemParametersInfoW(
+        20, 0, os.path.join(desktop, path), 3)
+except:
+    pass  # In case the user is not on windows
 time.sleep(1)
 print('Hello')
 time.sleep(1)
@@ -24,16 +31,30 @@ time.sleep(1)
 print('1...')
 time.sleep(1)
 print("Let's go!!!")
-import webbrowser
-for i in range(5):
-    webbrowser.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
-for i in range(70):
-    with open(f'index{i}.html','w') as file:
-        file.write("""<iframe width="100%" height="100%" src="https://www.youtube.com/embed/GtL1huin9EE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>""")
 for i in range(10):
-    os.system('cmd /k "echo Never gonna give you up & echo Never gonna let you down & echo Never gonna run around and desert you & echo Never gonna make you cry & echo Never gonna say goodbye & echo Never gonna tell a lie and hurt you"')
+    webbrowser.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
 
-os.system('cmd /k "pip install PyQt5 & pip install PyQtWebEngine"')
+for i in range(70):
+    with open(f'index{i}.html', 'w') as file:
+        file.write("""<iframe width="100%" height="100%" src="https://www.youtube.com/embed/GtL1huin9EE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>""")
+for i in range(15):
+    from tkinter import *
+    root = Tk()
+    root.geometry('650x650')
+    root.title('Never gonna give you up Lyrics')
+    a = Label(root, text="""
+    Never gonna give you up
+    Never gonna let you down
+    Never gonna run around and desert you
+    Never gonna make you cry
+    Never gonna say goodbye
+    Never gonna tell a lie and hurt you
+    """, font=('Arial', 20), anchor='w', justify=LEFT).pack()
+    root.mainloop()
+
+import subprocess
+subprocess.check_call([sys.executable, "-m", "pip", "install", 'PyQt5'])
+subprocess.check_call([sys.executable, "-m", "pip", "install", 'PyQtWebEngine'])
 import sys
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
@@ -43,11 +64,12 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
         self.browser = QWebEngineView()
-        self.browser.setUrl(QUrl('https://www.youtube.com/watch?v=dQw4w9WgXcQ'))
+        self.browser.setUrl(
+            QUrl('https://www.youtube.com/watch?v=dQw4w9WgXcQ'))
         self.setCentralWidget(self.browser)
         self.showMaximized()
 app = QApplication(sys.argv)
 QApplication.setApplicationName('You have been rickrolled')
-for i in range(10):
+for i in range(15):
     window = MainWindow()
     app.exec_()
