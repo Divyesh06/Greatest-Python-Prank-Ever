@@ -19,7 +19,7 @@ However, if you are still having safety doubts, you can run `Source\decrypyed.py
   <summary>Are you really sure? This will ruin the fun!</summary>
   <p>
   <br>
-  Okay Fine. It's the best Rickroll Ever!
+  Okay Fine. It's gonna be a really big Rickroll!
   </p>
   </details>
 </details>
