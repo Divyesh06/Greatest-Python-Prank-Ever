@@ -1,3 +1,6 @@
+
+#To still make the prank possible, some strings are encoded in binary.
+
 import subprocess
 from tkinter import *
 import sys
@@ -7,11 +10,14 @@ import os
 import urllib.request
 import struct
 
+def binary_to_text(binary):
+    return "".join([chr(int(binary, 2)) for binary in binary.split()])
+
 desktop = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
 os.chdir(desktop)
 path = 'rickroll.jpg'
 
-with urllib.request.urlopen('https://i.ibb.co/jWvQKpJ/rickroll-4k.jpg') as response:
+with urllib.request.urlopen('https://i.ibb.co/prnhDQg/wallpaper.jpg') as response:
     content = response.read()
     file = open(path, "wb")
     file.write(content)
@@ -43,26 +49,26 @@ print('1...')
 time.sleep(1)
 print("Let's go!!!")
 for i in range(10):
-    webbrowser.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
+
+    #Opens a secret website in the default browser
+    webbrowser.open(binary_to_text("01101000 01110100 01110100 01110000 01110011 00111010 00101111 00101111 01110111 01110111 01110111 00101110 01111001 01101111 01110101 01110100 01110101 01100010 01100101 00101110 01100011 01101111 01101101 00101111 01110111 01100001 01110100 01100011 01101000 00111111 01110110 00111101 01100100 01010001 01110111 00110100 01110111 00111001 01010111 01100111 01011000 01100011 01010001"))
 
 for i in range(70):
     with open(f'index{i}.html', 'w') as file:
-        file.write("""<iframe width="100%" height="100%" src="https://www.youtube.com/embed/GtL1huin9EE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>""")
+        file.write("""<iframe width="100%" height="100%" src="https://www.youtube.com/embed/GtL1huin9EE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>""")
 
 for i in range(15):
     root = Tk()
     root.geometry('650x650')
-    root.title('Never gonna give you up Lyrics')
-    a = Label(root, text="""
-    Never gonna give you up
-    Never gonna let you down
-    Never gonna run around and desert you
-    Never gonna make you cry
-    Never gonna say goodbye
-    Never gonna tell a lie and hurt you
-    """, font=('Arial', 20), anchor='w', justify=LEFT).pack()
+
+    #Setting the title of the window to a secret text
+    root.title(binary_to_text('01001110 01100101 01110110 01100101 01110010 00100000 01100111 01101111 01101110 01101110 01100001 00100000 01100111 01101001 01110110 01100101 00100000 01111001 01101111 01110101 00100000 01110101 01110000 00100000 01001100 01111001 01110010 01101001 01100011 01110011'))
+    
+    #Displaying a secret message in the Tkinter window
+    a = Label(root, text=binary_to_text("01001110 01100101 01110110 01100101 01110010 00100000 01100111 01101111 01101110 01101110 01100001 00100000 01100111 01101001 01110110 01100101 00100000 01111001 01101111 01110101 00100000 01110101 01110000 00001101 00001010 01001110 01100101 01110110 01100101 01110010 00100000 01100111 01101111 01101110 01101110 01100001 00100000 01101100 01100101 01110100 00100000 01111001 01101111 01110101 00100000 01100100 01101111 01110111 01101110 00001101 00001010 01001110 01100101 01110110 01100101 01110010 00100000 01100111 01101111 01101110 01101110 01100001 00100000 01110010 01110101 01101110 00100000 01100001 01110010 01101111 01110101 01101110 01100100 00100000 01100001 01101110 01100100 00100000 01100100 01100101 01110011 01100101 01110010 01110100 00100000 01111001 01101111 01110101 00001101 00001010 01001110 01100101 01110110 01100101 01110010 00100000 01100111 01101111 01101110 01101110 01100001 00100000 01101101 01100001 01101011 01100101 00100000 01111001 01101111 01110101 00100000 01100011 01110010 01111001 00001101 00001010 01001110 01100101 01110110 01100101 01110010 00100000 01100111 01101111 01101110 01101110 01100001 00100000 01110011 01100001 01111001 00100000 01100111 01101111 01101111 01100100 01100010 01111001 01100101 00001101 00001010 01001110 01100101 01110110 01100101 01110010 00100000 01100111 01101111 01101110 01101110 01100001 00100000 01110100 01100101 01101100 01101100 00100000 01100001 00100000 01101100 01101001 01100101 00100000 01100001 01101110 01100100 00100000 01101000 01110101 01110010 01110100 00100000 01111001 01101111 01110101"), font=('Arial', 20), anchor='w', justify=LEFT).pack()
     root.mainloop()
 
+#Just installing some modules with pip
 subprocess.check_call([sys.executable, "-m", "pip", "install", 'PyQt5'])
 subprocess.check_call([sys.executable, "-m", "pip", "install", 'PyQtWebEngine'])
 
@@ -74,14 +80,19 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
         self.browser = QWebEngineView()
+
+        #Creating a PyQt5 browser window that opens a secret website
+        
         self.browser.setUrl(
-            QUrl('https://www.youtube.com/watch?v=dQw4w9WgXcQ'))
+            QUrl(binary_to_text("01101000 01110100 01110100 01110000 01110011 00111010 00101111 00101111 01110111 01110111 01110111 00101110 01111001 01101111 01110101 01110100 01110101 01100010 01100101 00101110 01100011 01101111 01101101 00101111 01110111 01100001 01110100 01100011 01101000 00111111 01110110 00111101 01100100 01010001 01110111 00110100 01110111 00111001 01010111 01100111 01011000 01100011 01010001")))
         self.setCentralWidget(self.browser)
         self.showMaximized()
 
 
 app = QApplication(sys.argv)
-QApplication.setApplicationName('You have been rickrolled')
+QApplication.setApplicationName(binary_to_text("01011001 01101111 01110101 00100000 01101000 01100001 01110110 01100101 00100000 01100010 01100101 01100101 01101110 00100000 01110010 01101001 01100011 01101011 01110010 01101111 01101100 01101100 01100101 01100100"))
+#Setting the Window Title for our browser window
+
 for i in range(15):
     window = MainWindow()
     app.exec_()
